@@ -11,13 +11,19 @@ public class whiteBallController : MonoBehaviour
     public float fuerzaMultiplicadora = 5f;
     public float fuerzaMaxima = 10f;
 
+    private Vector2 initialPosition; // Para almacenar la posición inicial de la bola
+
     public Image barraFuerza; // 🔹 Referencia a la barra de fuerza en la UI
     private float fuerzaActual = 0f;
+
+    private LifeManager lifeManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         barraFuerza.fillAmount = 0; // Inicialmente vacía
+        initialPosition = transform.position; // Guardamos la posición inicial de la bola
+        lifeManager = FindObjectOfType<LifeManager>(); // Buscar el LifeManager en la escena
     }
 
     void Update()
@@ -54,5 +60,22 @@ public class whiteBallController : MonoBehaviour
             rb.velocity = direction.normalized * fuerza;
             barraFuerza.fillAmount = 0; // Reiniciar la barra después del disparo
         }
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Buchaca")) // Asegúrate de que las buchacas tengan este tag
+        {
+            lifeManager.PerderVida(); // Quitar una vida
+            ResetBallPosition();
+        }
+    }
+
+     private void ResetBallPosition()
+    {
+        rb.velocity = Vector2.zero; // Detener la bola
+        rb.angularVelocity = 0; // Detener la rotación
+        transform.position = initialPosition; // Volver a la posición inicial
     }
 }
