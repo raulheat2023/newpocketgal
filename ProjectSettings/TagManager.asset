@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Buchaca
   - BordeMesa
+  - Bolas
+  - Borde
+  - BolasNumber
   layers:
   - Default
   - TransparentFX
@@ -42,4 +45,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: balls_shadow
+    uniqueID: 3264095247
+    locked: 0
+  - name: balls_difuse
+    uniqueID: 1802536665
+    locked: 0
+  - name: balls_specular
+    uniqueID: 3502781895
+    locked: 0
+  - name: Number
+    uniqueID: 3076969589
     locked: 0

@@ -4,9 +4,11 @@ using System.Collections; // Necesario para usar IEnumerator
 
 public class LifeManager : MonoBehaviour
 {
-    public int vidas = 3; // Número inicial de vidas
+    public int vidas = 4; // Número inicial de vidas
     public Image[] corazones; // Arreglo de imágenes de corazones
     public Animator[] heartAnimators;
+    private bool bolaMetida = false;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -18,12 +20,32 @@ public class LifeManager : MonoBehaviour
         ActualizarVidasUI();
     }
 
+    public void RegistrarBolaMetida(int bolaID)
+    {
+        bolaMetida = true;
+        Debug.Log($"✅ Se metió la bola con ID: {bolaID}");
+    }
+
+    public void FinDeTurno(bool bolaBlancaMetida, Rigidbody2D bolaBlanca)
+    {
+        
+    FrenarBolaBlanca(bolaBlanca); // Detener la bola blanca
+
+    if (!bolaMetida || bolaBlancaMetida)
+    {
+        Debug.Log("❌ No se metió ninguna bola en este turno.");
+        PerderVida();
+    }
+
+    bolaMetida = false; // Reiniciar para el próximo turno
+}
+
     public void PerderVida()
     {
         if (vidas > 0)
         {
             vidas--;
-             Animator heartAnimator = heartAnimators[vidas];
+            Animator heartAnimator = heartAnimators[vidas];
         
         if (heartAnimator != null)
         {
@@ -40,6 +62,13 @@ public class LifeManager : MonoBehaviour
             }
         }
     }
+
+    public void FrenarBolaBlanca(Rigidbody2D whiteBall)
+    {
+        whiteBall.velocity = Vector2.zero;
+        whiteBall.angularVelocity = 0f;
+    }
+
 
     IEnumerator FadeOutHeart(Image brokenHeart)
     {
