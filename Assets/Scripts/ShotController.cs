@@ -21,6 +21,8 @@ public class ShotController : MonoBehaviour
     public AudioSource apuntadoAudio;
     private AudioSource audioSource;
     public AudioMixer audioMixer;
+    public AudioClip soundShot;
+    public AudioSource shotAudioSource;
     
     [Header("Configuración de Movimiento")]
     public int maxBounces = 3;
@@ -120,6 +122,10 @@ public class ShotController : MonoBehaviour
         Vector2 direccionDisparo = (startPoint - endPoint).normalized;
         rb.AddForce(direccionDisparo * fuerzaActual, ForceMode2D.Impulse);
         barraFuerza.value = 0;
+        if (soundShot != null && shotAudioSource != null)
+        {
+            shotAudioSource.PlayOneShot(soundShot);
+        }
     }
 
     bool EstaEnMovimiento()
@@ -152,7 +158,7 @@ public class ShotController : MonoBehaviour
     {
         if (clip != null)
         {
-            apuntadoAudio.volume = Mathf.Clamp(impactForce / 10f, 0.1f, 1f);
+            apuntadoAudio.volume = 1;
             apuntadoAudio.PlayOneShot(clip);
         }
     }
@@ -198,7 +204,7 @@ public class ShotController : MonoBehaviour
             CanvasGroup canvasGroup = numero.GetComponent<CanvasGroup>();
             if (canvasGroup != null)
             {
-                canvasGroup.alpha = 0.8f;
+                canvasGroup.alpha = 0.9f;
             }
         }
     }
