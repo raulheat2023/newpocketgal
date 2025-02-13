@@ -25,7 +25,7 @@ public class ShotController : MonoBehaviour
     [Header("Configuración de Movimiento")]
     public int maxBounces = 3;
     public LayerMask collisionLayer;
-    public float lineLength = 2f;
+    public float lineLength = .2f;
     public GameObject trajectoryPointPrefab;
     public int trajectoryPointCount = 10;
     
@@ -38,7 +38,6 @@ public class ShotController : MonoBehaviour
     private Vector2 initialPosition;
     private float umbralMovimiento = 0.1f;
     private LifeManager lifeManager;
-    private static int activeCollisions = 0;
     private const float baseVolume = -10f;
     private const float maxVolume = 0f;
     private const float volumeReductionPerHit = -5f;
@@ -51,12 +50,21 @@ public class ShotController : MonoBehaviour
         lifeManager = FindObjectOfType<LifeManager>();
         CreateTrajectoryPoints();
         audioSource = GetComponent<AudioSource>();
+        MostrarNumeros();
     }
 
     void Update()
     {
         DetectarEntrada();
         ActualizarCargaFuerza();
+        if (rb.velocity.magnitude > 0)
+        {
+            OcultarNumeros();
+        }
+        else
+        {
+            MostrarNumeros();
+        }
     }
 
     private void DetectarEntrada()
@@ -77,7 +85,6 @@ public class ShotController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && cargandoFuerza)
         {
             EjecutarDisparo();
-            OcultarTrayectoria();
         }
     }
 
@@ -89,7 +96,7 @@ public class ShotController : MonoBehaviour
             startPoint = mousePosition;
             cargandoFuerza = true;
             HandleAnimator.SetBool("Cargando", true);
-            if (!apuntadoAudio.isPlaying) apuntadoAudio.Play();
+            if (!apuntadoAudio.isPlaying) apuntadoAudio.Play();     
             MostrarTrayectoria();
         }
     }
@@ -108,7 +115,7 @@ public class ShotController : MonoBehaviour
         isDragging = false;
         HandleAnimator.SetBool("Cargando", false);
         apuntadoAudio.Stop();
-        
+        OcultarTrayectoria();
         fuerzaActual = Mathf.Lerp(fuerzaMinima, fuerzaMaxima, barraFuerza.value);
         Vector2 direccionDisparo = (startPoint - endPoint).normalized;
         rb.AddForce(direccionDisparo * fuerzaActual, ForceMode2D.Impulse);
@@ -183,6 +190,34 @@ public class ShotController : MonoBehaviour
         }
     }
 
+    private void MostrarNumeros()
+    {
+        GameObject[] numeros = GameObject.FindGameObjectsWithTag("BolasNumber");
+        foreach (GameObject numero in numeros)
+        {
+            CanvasGroup canvasGroup = numero.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 0.8f;
+            }
+        }
+    }
+
+    private void OcultarNumeros()
+    {
+        GameObject[] numeros = GameObject.FindGameObjectsWithTag("BolasNumber");
+        foreach (GameObject numero in numeros)
+        {
+            CanvasGroup canvasGroup = numero.GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 0f;
+            }
+            
+        }
+
+    }
+
     private void ActualizarTrayectoria()
     {
         Vector2 direccionDisparo = (startPoint - endPoint).normalized;
@@ -192,9 +227,26 @@ public class ShotController : MonoBehaviour
 
         for (int i = 0; i < trajectoryPoints.Count; i++)
         {
-            float t = i * 0.1f;
-            Vector2 puntoPosicion = posicionInicial + velocidad * t;
-            trajectoryPoints[i].transform.position = puntoPosicion;
+            float t = i * 0.005f;
+            RaycastHit2D hit = Physics2D.Raycast(posicionInicial, velocidad.normalized, velocidad.magnitude * t, collisionLayer);
+            
+            if (hit.collider != null)
+            {
+                velocidad = Vector2.Reflect(velocidad, hit.normal);
+                posicionInicial = hit.point + hit.normal * 0.001f; 
+            }
+            else
+            {
+                posicionInicial += velocidad * t;
+            }
+            
+            trajectoryPoints[i].transform.position = posicionInicial;
+            trajectoryPoints[i].SetActive(true);
         }
     }
 }
+
+
+
+
+
