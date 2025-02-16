@@ -90,7 +90,7 @@ public class ShotController : MonoBehaviour
         }
     }
 
-    public void IniciarApuntado(Vector2 mousePosition)
+    private void IniciarApuntado(Vector2 mousePosition)
     {
         if (rb.velocity.magnitude == 0 && !EstaEnMovimiento())
         {
