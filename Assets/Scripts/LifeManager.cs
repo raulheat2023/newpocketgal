@@ -26,15 +26,19 @@ public class LifeManager : MonoBehaviour
         Debug.Log($"✅ Se metió la bola con ID: {bolaID}");
     }
 
-    public void FinDeTurno(bool bolaBlancaMetida, Rigidbody2D bolaBlanca)
+    public void FinDeTurno(bool bolaBlancaMetida, Rigidbody2D whiteBall)
     {
         
-    FrenarBolaBlanca(bolaBlanca); // Detener la bola blanca
+    FrenarBolaBlanca(whiteBall); // Detener la bola blanca
 
     if (!bolaMetida || bolaBlancaMetida)
     {
         Debug.Log("❌ No se metió ninguna bola en este turno.");
         PerderVida();
+    }
+
+    if (bolaBlancaMetida){
+        Debug.Log("Se metió la bola blanca!");
     }
 
     bolaMetida = false; // Reiniciar para el próximo turno

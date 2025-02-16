@@ -73,7 +73,7 @@ public class ShotController : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
-        if (Input.GetMouseButtonDown(0) && Vector2.Distance(mousePosition, transform.position) < 0.1f)
+        if (Input.GetMouseButtonDown(0) && Vector2.Distance(mousePosition, transform.position) < 0.5f)
         {
             IniciarApuntado(mousePosition);
         }
@@ -90,7 +90,7 @@ public class ShotController : MonoBehaviour
         }
     }
 
-    private void IniciarApuntado(Vector2 mousePosition)
+    public void IniciarApuntado(Vector2 mousePosition)
     {
         if (rb.velocity.magnitude == 0 && !EstaEnMovimiento())
         {

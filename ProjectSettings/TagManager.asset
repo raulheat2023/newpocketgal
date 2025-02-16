@@ -9,6 +9,7 @@ TagManager:
   - Bolas
   - Borde
   - BolasNumber
+  - BolaBlanca
   layers:
   - Default
   - TransparentFX
