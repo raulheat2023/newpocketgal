@@ -9,10 +9,12 @@ public class PocketTrigger : MonoBehaviour
     public GameTimer gameTimer;
 
     private List<string> bolasInsertadas = new List<string>();  
+    private ScoreManager scoreManager;
 
     void Start()
     {
         gameTimer = FindObjectOfType<GameTimer>();  // Buscar el temporizador en la escena
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,20 +34,16 @@ public class PocketTrigger : MonoBehaviour
             }
 
              RegistrarBolaIngresada(bolaNombre);
-        }
-
-
-        if (collision.CompareTag("Bolas"))
-        {
-            gameTimer.AgregarTiempo(10f);
-            Debug.Log("Bola embocada: " + collision.gameObject.name + " (+10s)");
+             gameTimer.AgregarTiempo(10f);
+             Debug.Log("Bola embocada: " + collision.gameObject.name + " (+10s)");
+             scoreManager.SumarPuntos(100);
+             Debug.Log("Puntaje actualizado: " + scoreManager.ObtenerPuntaje());
         }
 
         if (collision.CompareTag("BolaBlanca"))
         {
             Debug.Log("¡Bola blanca embocada! No se suma tiempo.");
-        }
-
+        }       
     }
 
     private void RegistrarBolaIngresada(string bolaNombre)
