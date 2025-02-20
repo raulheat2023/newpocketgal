@@ -7,6 +7,10 @@ public class PocketTrigger : MonoBehaviour
     public RectTransform barraBolas;
     public GameObject bolaPrefab;
     public GameTimer gameTimer;
+    
+    public AudioClip soundBolaNormal; 
+    public AudioClip soundBolaBlanca;
+    private AudioSource audioSource;
 
     private List<string> bolasInsertadas = new List<string>();  
     private ScoreManager scoreManager;
@@ -15,15 +19,16 @@ public class PocketTrigger : MonoBehaviour
     {
         gameTimer = FindObjectOfType<GameTimer>();  // Buscar el temporizador en la escena
         scoreManager = FindObjectOfType<ScoreManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        string bolaNombre = collision.gameObject.name;
         // Verifica si el objeto tiene el tag "Bolas"
         if (collision.CompareTag("Bolas"))
         {
             Debug.Log($"✅ ¡La bola {collision.gameObject.name} ha entrado en la buchaca!");
-            string bolaNombre = collision.gameObject.name;
             Debug.Log("Bola ingresó en la buchaca: " + bolaNombre);
 
             BallIdentifier ball = collision.GetComponent<BallIdentifier>(); 
@@ -32,18 +37,23 @@ public class PocketTrigger : MonoBehaviour
                 Debug.Log($"🎯 Bola ID: {ball.ballID} registrada.");
                 FindObjectOfType<LifeManager>().RegistrarBolaMetida(ball.ballID);
             }
-
-             RegistrarBolaIngresada(bolaNombre);
              gameTimer.AgregarTiempo(10f);
              Debug.Log("Bola embocada: " + collision.gameObject.name + " (+10s)");
+
+             RegistrarBolaIngresada(bolaNombre);
+
              scoreManager.SumarPuntos(100);
+             scoreManager.RegistrarBolaIngresadaJson(collision.gameObject.name);
              Debug.Log("Puntaje actualizado: " + scoreManager.ObtenerPuntaje());
+             
+             audioSource.PlayOneShot(soundBolaNormal);
         }
 
         if (collision.CompareTag("BolaBlanca"))
-        {
+        { 
             Debug.Log("¡Bola blanca embocada! No se suma tiempo.");
-        }       
+            audioSource.PlayOneShot(soundBolaBlanca);
+        }
     }
 
     private void RegistrarBolaIngresada(string bolaNombre)

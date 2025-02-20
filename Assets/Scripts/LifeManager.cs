@@ -9,6 +9,7 @@ public class LifeManager : MonoBehaviour
     public Animator[] heartAnimators;
     private bool bolaMetida = false;
     private Rigidbody2D rb;
+    private ScoreManager scoreManager;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class LifeManager : MonoBehaviour
         {
             heartAnimators[i] = corazones[i].GetComponent<Animator>(); // Obtener el Animator de cada corazón
         }
+        scoreManager = FindObjectOfType<ScoreManager>();
         ActualizarVidasUI();
     }
 
@@ -34,6 +36,7 @@ public class LifeManager : MonoBehaviour
     if (!bolaMetida || bolaBlancaMetida)
     {
         Debug.Log("❌ No se metió ninguna bola en este turno.");
+        scoreManager.RegistrarBolaIngresadaJson("turnofail");
         PerderVida();
     }
 
