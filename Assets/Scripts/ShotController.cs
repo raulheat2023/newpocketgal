@@ -38,12 +38,59 @@ public class ShotController : MonoBehaviour
     private Vector2 endPoint;
     private bool isDragging = false;
     private Vector2 initialPosition;
-    private float umbralMovimiento = 0.1f;
     private LifeManager lifeManager;
     private const float baseVolume = -10f;
     private const float maxVolume = 0f;
     private const float volumeReductionPerHit = -5f;
     private List<GameObject> trajectoryPoints = new List<GameObject>();
+
+    [Header("Botones de efecto")]
+    public Button botonRetroceso;
+    public Button botonCorrido;
+    public Button botonIzquierda;
+    public Button botonDerecha;
+    public Color colorSeleccionado = Color.green;
+    public Color colorNormal = Color.white;
+
+    // efectos
+    private enum Efecto
+    {
+        Ninguno,
+        Retroceso,
+        Corrido,
+        Izquierda,
+        Derecha
+    }
+    private Efecto efectoSeleccionado = Efecto.Ninguno;
+
+    public void SeleccionarEfecto(string efecto)
+    {
+        switch (efecto)
+        {
+            case "Retroceso":
+                efectoSeleccionado = Efecto.Retroceso;
+                Debug.Log("efecto retroceso seleccionado");
+                break;
+            case "Corrido":
+                efectoSeleccionado = Efecto.Corrido;
+                Debug.Log("efecto Corrido seleccionado");
+                break;
+            case "Izquierda":
+                efectoSeleccionado = Efecto.Izquierda;
+                Debug.Log("efecto Izquierda seleccionado");
+                break;
+            case "Derecha":
+                efectoSeleccionado = Efecto.Derecha;
+                Debug.Log("efecto Derecha seleccionado");
+                break;
+            default:
+                efectoSeleccionado = Efecto.Ninguno;
+                Debug.Log("efecto Centro seleccionado");
+                break;
+        }
+
+        ActualizarColoresBotones();
+    }
 
     void Start()
     {
@@ -135,11 +182,30 @@ public class ShotController : MonoBehaviour
         fuerzaActual = Mathf.Lerp(fuerzaMinima, fuerzaMaxima, barraFuerza.value);
         Vector2 direccionDisparo = (startPoint - endPoint).normalized;
         rb.AddForce(direccionDisparo * fuerzaActual, ForceMode2D.Impulse);
+
+        switch (efectoSeleccionado)
+        {
+            case Efecto.Retroceso:
+                StartCoroutine(AplicarEfectoRetroceso());
+                break;
+            case Efecto.Corrido:
+                StartCoroutine(AplicarEfectoCorrido());
+                break;
+            case Efecto.Izquierda:
+                rb.AddTorque(10f, ForceMode2D.Impulse); // Simula giro hacia la izquierda
+                Debug.Log("efecto Izquierda aplicado");
+                break;
+            case Efecto.Derecha:
+                rb.AddTorque(-10f, ForceMode2D.Impulse); // Simula giro hacia la derecha
+                Debug.Log("efecto Derecha aplicado");
+                break;
+        }
+
         barraFuerza.value = 0;
         if (soundShot != null && shotAudioSource != null)
         {
             shotAudioSource.PlayOneShot(soundShot);
-        }
+        }    
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -231,6 +297,28 @@ public class ShotController : MonoBehaviour
             
         }
 
+    }
+
+    private IEnumerator AplicarEfectoRetroceso()
+    {
+        yield return new WaitForSeconds(0.001f); // Espera un poco antes de aplicar el efecto
+        rb.AddForce(-rb.velocity.normalized * (fuerzaActual / 2), ForceMode2D.Impulse);
+        Debug.Log("Efecto de retroceso aplicado");
+    }
+
+    private IEnumerator AplicarEfectoCorrido()
+    {
+        yield return new WaitForSeconds(0.001f);
+        rb.AddForce(rb.velocity.normalized * (fuerzaActual / 2), ForceMode2D.Impulse);
+        Debug.Log("Efecto de Corrido aplicado");
+    }
+
+    private void ActualizarColoresBotones()
+    {
+        botonRetroceso.image.color = (efectoSeleccionado == Efecto.Retroceso) ? colorSeleccionado : colorNormal;
+        botonCorrido.image.color = (efectoSeleccionado == Efecto.Corrido) ? colorSeleccionado : colorNormal;
+        botonIzquierda.image.color = (efectoSeleccionado == Efecto.Izquierda) ? colorSeleccionado : colorNormal;
+        botonDerecha.image.color = (efectoSeleccionado == Efecto.Derecha) ? colorSeleccionado : colorNormal;
     }
 
     private void ActualizarTrayectoria()
