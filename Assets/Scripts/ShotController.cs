@@ -59,7 +59,7 @@ public class ShotController : MonoBehaviour
     {
         DetectarEntrada();
         ActualizarCargaFuerza();
-        if (rb.velocity.magnitude > 0)
+        if (rb.velocity.magnitude > 0.001)
         {
             OcultarNumeros();
         }
@@ -69,11 +69,25 @@ public class ShotController : MonoBehaviour
         }
     }
 
+    private bool TodasLasBolasDetenidas()
+    {
+        GameObject[] bolas = GameObject.FindGameObjectsWithTag("Bolas"); // Encuentra todas las bolas
+        foreach (GameObject bola in bolas)
+        {
+            Rigidbody2D rbBola = bola.GetComponent<Rigidbody2D>();
+            if (rbBola != null && rbBola.velocity.magnitude > 0.1f) // Si alguna bola aún se mueve, retorna false
+            {
+                return false;
+            }
+        }
+        return true; // Todas las bolas están detenidas
+    }
+
     private void DetectarEntrada()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
-        if (Input.GetMouseButtonDown(0) && Vector2.Distance(mousePosition, transform.position) < 0.5f)
+        if (Input.GetMouseButtonDown(0) && Vector2.Distance(mousePosition, transform.position) < 0.5f && TodasLasBolasDetenidas())
         {
             IniciarApuntado(mousePosition);
         }
@@ -92,7 +106,7 @@ public class ShotController : MonoBehaviour
 
     private void IniciarApuntado(Vector2 mousePosition)
     {
-        if (rb.velocity.magnitude == 0 && !EstaEnMovimiento())
+        if (rb.velocity.magnitude == 0 && TodasLasBolasDetenidas())
         {
             isDragging = true;
             startPoint = mousePosition;
@@ -126,11 +140,6 @@ public class ShotController : MonoBehaviour
         {
             shotAudioSource.PlayOneShot(soundShot);
         }
-    }
-
-    bool EstaEnMovimiento()
-    {
-        return rb.velocity.magnitude > umbralMovimiento;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
