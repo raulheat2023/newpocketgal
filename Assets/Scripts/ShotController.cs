@@ -52,6 +52,16 @@ public class ShotController : MonoBehaviour
     public Color colorSeleccionado = Color.green;
     public Color colorNormal = Color.white;
 
+    private float velocidadRotacion;
+
+    [Header("Animaciones de Efecto")]
+    public Animator animator;
+    public RuntimeAnimatorController retrocesoAnim;
+    public RuntimeAnimatorController corridoAnim;
+    public RuntimeAnimatorController izquierdaAnim;
+    public RuntimeAnimatorController derechaAnim;
+    public RuntimeAnimatorController normalAnim;
+
     // efectos
     private enum Efecto
     {
@@ -69,22 +79,27 @@ public class ShotController : MonoBehaviour
         {
             case "Retroceso":
                 efectoSeleccionado = Efecto.Retroceso;
+                animator.runtimeAnimatorController = retrocesoAnim;
                 Debug.Log("efecto retroceso seleccionado");
                 break;
             case "Corrido":
                 efectoSeleccionado = Efecto.Corrido;
+                animator.runtimeAnimatorController = corridoAnim;
                 Debug.Log("efecto Corrido seleccionado");
                 break;
             case "Izquierda":
                 efectoSeleccionado = Efecto.Izquierda;
+                animator.runtimeAnimatorController = izquierdaAnim;
                 Debug.Log("efecto Izquierda seleccionado");
                 break;
             case "Derecha":
                 efectoSeleccionado = Efecto.Derecha;
+                animator.runtimeAnimatorController = derechaAnim;
                 Debug.Log("efecto Derecha seleccionado");
                 break;
             default:
                 efectoSeleccionado = Efecto.Ninguno;
+                animator.runtimeAnimatorController = normalAnim;
                 Debug.Log("efecto Centro seleccionado");
                 break;
         }
@@ -114,6 +129,16 @@ public class ShotController : MonoBehaviour
         {
             MostrarNumeros();
         }
+
+        // Obtener la velocidad de rotación y de desplazamiento
+        float velocidadRotacion = Mathf.Abs(rb.angularVelocity) / 100f; // Normalizamos la rotación
+        float velocidadMovimiento = rb.velocity.magnitude / 5f; // Normalizamos la velocidad lineal
+
+        // Combinamos ambas velocidades para la animación
+        float velocidadAnimacion = velocidadRotacion + velocidadMovimiento;
+
+        // Limitamos la velocidad de la animación para evitar valores extremos
+        animator.speed = Mathf.Clamp(velocidadAnimacion, 0.1f, 3f);
     }
 
     private bool TodasLasBolasDetenidas()
@@ -179,10 +204,6 @@ public class ShotController : MonoBehaviour
         HandleAnimator.SetBool("Cargando", false);
         apuntadoAudio.Stop();
         OcultarTrayectoria();
-        fuerzaActual = Mathf.Lerp(fuerzaMinima, fuerzaMaxima, barraFuerza.value);
-        Vector2 direccionDisparo = (startPoint - endPoint).normalized;
-        rb.AddForce(direccionDisparo * fuerzaActual, ForceMode2D.Impulse);
-
         switch (efectoSeleccionado)
         {
             case Efecto.Retroceso:
@@ -192,14 +213,16 @@ public class ShotController : MonoBehaviour
                 StartCoroutine(AplicarEfectoCorrido());
                 break;
             case Efecto.Izquierda:
-                rb.AddTorque(10f, ForceMode2D.Impulse); // Simula giro hacia la izquierda
-                Debug.Log("efecto Izquierda aplicado");
+                StartCoroutine(AplicarEfectoIzquierda());
                 break;
             case Efecto.Derecha:
-                rb.AddTorque(-10f, ForceMode2D.Impulse); // Simula giro hacia la derecha
-                Debug.Log("efecto Derecha aplicado");
+                StartCoroutine(AplicarEfectoDerecha());
                 break;
         }
+
+        fuerzaActual = Mathf.Lerp(fuerzaMinima, fuerzaMaxima, barraFuerza.value);
+        Vector2 direccionDisparo = (startPoint - endPoint).normalized;
+        rb.AddForce(direccionDisparo * fuerzaActual, ForceMode2D.Impulse);
 
         barraFuerza.value = 0;
         if (soundShot != null && shotAudioSource != null)
@@ -311,6 +334,20 @@ public class ShotController : MonoBehaviour
         yield return new WaitForSeconds(0.001f);
         rb.AddForce(rb.velocity.normalized * (fuerzaActual / 2), ForceMode2D.Impulse);
         Debug.Log("Efecto de Corrido aplicado");
+    }
+
+    private IEnumerator AplicarEfectoDerecha()
+    {
+        yield return new WaitForSeconds(0f);
+        rb.AddTorque(-2f, ForceMode2D.Impulse); // Simula giro hacia la derecha
+        Debug.Log("efecto Derecha aplicado");
+    }
+
+    private IEnumerator AplicarEfectoIzquierda()
+    {
+        yield return new WaitForSeconds(0f);
+        rb.AddTorque(2f, ForceMode2D.Impulse); // Simula giro hacia la izquierda
+        Debug.Log("efecto Izquierda aplicado");
     }
 
     private void ActualizarColoresBotones()

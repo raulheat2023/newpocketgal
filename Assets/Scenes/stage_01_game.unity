@@ -11959,6 +11959,8 @@ GameObject:
   - component: {fileID: 1110842750}
   - component: {fileID: 1110842746}
   - component: {fileID: 1110842747}
+  - component: {fileID: 1110842751}
+  - component: {fileID: 1110842752}
   m_Layer: 6
   m_Name: whiteBall
   m_TagString: BolaBlanca
@@ -12326,6 +12328,46 @@ MonoBehaviour:
   botonDerecha: {fileID: 81845319}
   colorSeleccionado: {r: 0, g: 1, b: 0, a: 1}
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
+  animator: {fileID: 1110842751}
+  retrocesoAnim: {fileID: 9100000, guid: 12d72e42f781fcf46936a9edb2ca53de, type: 2}
+  corridoAnim: {fileID: 9100000, guid: aa3661e6ebfa69d408e07c5b0c248a9d, type: 2}
+  izquierdaAnim: {fileID: 9100000, guid: 09e59c7fc3290ab42b394e952ee61e60, type: 2}
+  derechaAnim: {fileID: 9100000, guid: 8506c920a9399e242803ea612283dd48, type: 2}
+  normalAnim: {fileID: 9100000, guid: f187786ed89f66f41a745329bbad00fe, type: 2}
+--- !u!95 &1110842751
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110842736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f187786ed89f66f41a745329bbad00fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1110842752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110842736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fdc23a50b0d17459b2a4b9d3fdab59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 1
+  minSpeedMultiplier: 0.2
 --- !u!1 &1111970414
 GameObject:
   m_ObjectHideFlags: 0
