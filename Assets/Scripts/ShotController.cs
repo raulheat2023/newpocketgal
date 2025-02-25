@@ -338,14 +338,14 @@ public class ShotController : MonoBehaviour
 
     private IEnumerator AplicarEfectoDerecha()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(0.001f);
         rb.AddTorque(-2f, ForceMode2D.Impulse); // Simula giro hacia la derecha
         Debug.Log("efecto Derecha aplicado");
     }
 
     private IEnumerator AplicarEfectoIzquierda()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSeconds(0.001f);
         rb.AddTorque(2f, ForceMode2D.Impulse); // Simula giro hacia la izquierda
         Debug.Log("efecto Izquierda aplicado");
     }
