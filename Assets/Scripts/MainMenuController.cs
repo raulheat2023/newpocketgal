@@ -2,38 +2,59 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
+
 {
-    // Función para iniciar el juego
+    public AudioSource insertCoinSource;
+    public AudioClip insertCoin;
+    public AudioSource insertOptionSource;
+    public AudioClip insertOption;
+
+    // Load sound effects
+    void Start(){
+        insertCoinSource = GetComponent<AudioSource>();
+        insertOptionSource = GetComponent<AudioSource>();
+    }
+
+    // Start game function
     public void StartGame()
     {
-        Debug.Log("Botón 'Comenzar el Juego' presionado. Cargando escena StartGame...");
-        SceneManager.LoadScene("StartGame");
+        Debug.Log("Button clicked 'Arcade mode start");
+        insertCoinSource.PlayOneShot(insertCoin);
+        LoadingManager.CargarEscena("nextStage");
     }
 
-    // Función para abrir la galería
+    // Start adventure game function
+    public void AdventureMode()
+    {
+        Debug.Log("Button clicked 'This feature is not available right now");
+        insertCoinSource.PlayOneShot(insertCoin);
+    }
+
+    // Start gallery function
     public void OpenGallery()
     {
-        Debug.Log("Botón 'Galería' presionado. Cargando escena Gallery...");
-        SceneManager.LoadScene("Gallery");
+        Debug.Log("Button clicked 'This feature is not available right now");
+        insertCoinSource.PlayOneShot(insertOption);
     }
 
-    // Función para abrir las opciones del juego
+    // Start option menu function
     public void OpenGameOptions()
     {
-        Debug.Log("Botón 'Opciones del Juego' presionado. Cargando escena GameOptions...");
+        Debug.Log("Button clicked 'Options window");
+        insertCoinSource.PlayOneShot(insertOption);
         SceneManager.LoadScene("GameOptions");
     }
 
-    // Función para salir del juego
+    // Quit game function
     public void ExitGame()
     {
-        Debug.Log("Botón 'Salir del Juego' presionado. Cerrando aplicación...");
+        Debug.Log("Button clicked 'Quit game...");
         Application.Quit();
 
-        // Nota: Application.Quit no funciona en el Editor de Unity.
-        // Este mensaje adicional ayuda a verificar en el Editor.
+        // Note: Application.Quit doesn't works on editor.
+        // This additional message helps to verify on the editor.
 #if UNITY_EDITOR
-        Debug.LogWarning("Nota: Application.Quit no funciona en el Editor. Usa una compilación para probarlo.");
+        Debug.LogWarning("Note: Application.Quit doesn't works on editor. Use a compilation to test it.");
 #endif
     }
 }

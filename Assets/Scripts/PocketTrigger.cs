@@ -7,6 +7,8 @@ public class PocketTrigger : MonoBehaviour
     public RectTransform barraBolas;
     public GameObject bolaPrefab;
     public GameTimer gameTimer;
+
+    public Animator Isumi_01;
     
     public AudioClip soundBolaNormal; 
     public AudioClip soundBolaBlanca;
@@ -30,6 +32,7 @@ public class PocketTrigger : MonoBehaviour
         {
             Debug.Log($"✅ ¡La bola {collision.gameObject.name} ha entrado en la buchaca!");
             Debug.Log("Bola ingresó en la buchaca: " + bolaNombre);
+            Isumi_01.SetTrigger("Sonrie");
 
             BallIdentifier ball = collision.GetComponent<BallIdentifier>(); 
             if (ball != null)
