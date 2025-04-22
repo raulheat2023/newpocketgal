@@ -1276,7 +1276,7 @@ MonoBehaviour:
   tiempoMinimo: 5
   progressText: {fileID: 43600020}
   progressImage: {fileID: 289877939}
-  fadeImage: {fileID: 0}
+  fadeImage: {fileID: 309076945}
   fadeDuration: 1
 --- !u!4 &1472946541
 Transform:

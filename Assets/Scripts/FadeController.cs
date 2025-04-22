@@ -1,57 +1,56 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections; // Necesario para usar IEnumerator
+using UnityEngine.UI;
+using System.Collections;
 
 public class FadeController : MonoBehaviour
 {
-    public Image fadeImage;  // Imagen para el efecto de fade
-    public float fadeDuration = 1f;  // Duración del fade
+    public Image fadeImage;
+    public float fadeDuration = 1f;
 
     private void Start()
     {
-        // Comienza con un fade in (desvanecer desde negro a transparente)
+        // Al inicio, se hace un fade in
         StartCoroutine(FadeIn());
     }
 
     public void LoadNextScene(string sceneName)
     {
-        // Inicia el fade out y cambia de escena
-        StartCoroutine(FadeOut(sceneName));
+        StartCoroutine(FadeOutAndLoad(sceneName));
     }
 
     private IEnumerator FadeIn()
     {
-        float elapsedTime = 0f;
         Color color = fadeImage.color;
-
-        while (elapsedTime < fadeDuration)
+        for (float t = 1f; t >= 0; t -= Time.deltaTime / fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            color.a = t;
             fadeImage.color = color;
             yield return null;
         }
-
-        // Asegura que el fade termine completamente
-        color.a = 0f;
-        fadeImage.color = color;
     }
 
-    private IEnumerator FadeOut(string sceneName)
+    private IEnumerator FadeOutAndLoad(string sceneName)
     {
-        float elapsedTime = 0f;
         Color color = fadeImage.color;
-
-        while (elapsedTime < fadeDuration)
+        for (float t = 0f; t <= 1f; t += Time.deltaTime / fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Lerp(0f, 1f, elapsedTime / fadeDuration);
+            color.a = t;
             fadeImage.color = color;
             yield return null;
         }
 
-        // Carga la siguiente escena después del fade
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadSceneAfterDelay(string targetScene, float delay)
+    {
+        StartCoroutine(WaitAndLoad(targetScene, delay));
+    }
+
+    private IEnumerator WaitAndLoad(string targetScene, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(FadeOutAndLoad(targetScene));
     }
 }

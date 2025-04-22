@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nextStage.unity
     guid: 0575460b3c8528148967b429e029c743
+  - enabled: 1
+    path: Assets/Scenes/stage_01_lobby.unity
+    guid: cd3a073716c93684cbb0859d90adec6e
+  - enabled: 1
+    path: Assets/Scenes/tutorialLoading.unity
+    guid: 129569c85946a5c459fe1d08392c623c
   m_configObjects: {}

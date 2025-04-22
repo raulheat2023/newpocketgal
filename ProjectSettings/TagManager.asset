@@ -26,10 +26,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - stage_bg
+  - stage_girl
+  - stage_fade
+  - stage_ui
   - 
   - 
   - 
