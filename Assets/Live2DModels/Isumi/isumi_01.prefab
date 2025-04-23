@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2933750331391601591}
   - component: {fileID: 2694660658229055895}
   - component: {fileID: 7344761064475754527}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Opacity: 1
-  _lastOpacity: 1
+  _lastOpacity: 0
   _isOverwrittenModelMultiplyColors: 0
   _isOverwrittenModelScreenColors: 0
   _modelMultiplyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 11400000, guid: 9947da1985cc0854e9243c273e153a02, type: 2}
+  _maskTexture: {fileID: 0}
 --- !u!114 &3894060292516604060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd9e6647bfff7542acb0200ab74bdd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CubismFadeMotionList: {fileID: 11400000, guid: 248813d1a607bc144b2868e7775decdd, type: 2}
+  CubismFadeMotionList: {fileID: 0}
 --- !u!1 &293325749302644468
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 7408386245445735579}
   - component: {fileID: 1748594674454581228}
   - component: {fileID: 1321587883556814320}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: dientes_inferior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 8653297582396943130}
   - component: {fileID: 1340893735265508954}
   - component: {fileID: 4131309724576410757}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 3229140861979802654}
   - component: {fileID: 6916151222200698359}
   - component: {fileID: 99442914611001139}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: left_eye_sclerotica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,14 +882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 3766929273599144330}
-  - {fileID: 3866883847479628652}
-  - {fileID: 1039533456246036545}
-  - {fileID: 3308080182949241265}
-  - {fileID: 4131309724576410757}
-  - {fileID: 7344761064475754527}
-  - {fileID: 2258448859669818800}
-  - {fileID: 715603939344781481}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 1597423735964005385}
   - component: {fileID: 6127930074367862127}
   - component: {fileID: 3766929273599144330}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: hair_shine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ GameObject:
   - component: {fileID: 5252375542253938631}
   - component: {fileID: 5865096149880782864}
   - component: {fileID: 4780486554715333731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: hair_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1329,7 @@ GameObject:
   - component: {fileID: 1346277281331122460}
   - component: {fileID: 38442396346059126}
   - component: {fileID: 562426255862079783}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_eye_sclerotica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1452,7 +1452,7 @@ GameObject:
   - component: {fileID: 5102713969563964526}
   - component: {fileID: 8841921208860408245}
   - component: {fileID: 8633970394972755748}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: neck_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 590174471330985832}
   - component: {fileID: 7085215583442608968}
   - component: {fileID: 3878030338412100974}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ GameObject:
   - component: {fileID: 259258102645697847}
   - component: {fileID: 442210036438495890}
   - component: {fileID: 2403666479233411044}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,7 +2126,7 @@ GameObject:
   - component: {fileID: 23552017844971407}
   - component: {fileID: 2310936404658221585}
   - component: {fileID: 1659022239217128031}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: left_eye_specular_shine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2310,7 +2310,7 @@ GameObject:
   - component: {fileID: 6072412051569536492}
   - component: {fileID: 4983783495132810637}
   - component: {fileID: 8660886327864607197}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: necklace_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,8 +2429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336805654886094979}
-  - component: {fileID: 4544496332164879448}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Drawables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2490,14 +2489,6 @@ Transform:
   m_Father: {fileID: 7100708541170933931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!222 &4544496332164879448
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3071150529738942896}
-  m_CullTransparentMesh: 1
 --- !u!1 &3388077381044508723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,7 +2502,7 @@ GameObject:
   - component: {fileID: 4094486240196388879}
   - component: {fileID: 4865818660815883898}
   - component: {fileID: 2258448859669818800}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2695,7 +2686,7 @@ GameObject:
   - component: {fileID: 2236908667628367384}
   - component: {fileID: 4196224794409071326}
   - component: {fileID: 862470650534193397}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2818,7 +2809,7 @@ GameObject:
   - component: {fileID: 1186441419125826543}
   - component: {fileID: 353855600859146474}
   - component: {fileID: 7355303380383092482}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2941,7 +2932,7 @@ GameObject:
   - component: {fileID: 8233495360243921809}
   - component: {fileID: 173776203327529398}
   - component: {fileID: 3308080182949241265}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3173,10 +3164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 2957152703118386793}
-  - {fileID: 973958480356343616}
-  - {fileID: 635751011413135162}
-  - {fileID: 1321587883556814320}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -3257,8 +3248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 8660886327864607197}
-  - {fileID: 1694997046645384305}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -3291,7 +3282,7 @@ GameObject:
   - component: {fileID: 3136205581943031981}
   - component: {fileID: 6620232811227744488}
   - component: {fileID: 635751011413135162}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: dientes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3658,7 +3649,7 @@ GameObject:
   - component: {fileID: 3462716091988597548}
   - component: {fileID: 5890210053859355828}
   - component: {fileID: 6357226538090208458}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: buckle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3829,11 +3820,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 5596785355413267323}
-  - {fileID: 7538255084304733813}
-  - {fileID: 132774164148224830}
-  - {fileID: 7707239168260544001}
-  - {fileID: 6357226538090208458}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -3866,7 +3857,7 @@ GameObject:
   - component: {fileID: 5784415440887049836}
   - component: {fileID: 7040714721494485482}
   - component: {fileID: 132774164148224830}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: dress_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,7 +3980,7 @@ GameObject:
   - component: {fileID: 3211720697222246903}
   - component: {fileID: 9157832573208448844}
   - component: {fileID: 4660310348042502778}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: eye_left_smile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4112,7 +4103,7 @@ GameObject:
   - component: {fileID: 84739453804998136}
   - component: {fileID: 7180036814093235013}
   - component: {fileID: 825800019570722309}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: left_eye_eyelash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4464,11 +4455,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 862470650534193397}
-  - {fileID: 3878030338412100974}
-  - {fileID: 7355303380383092482}
-  - {fileID: 2403666479233411044}
-  - {fileID: 8633970394972755748}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -4501,7 +4492,7 @@ GameObject:
   - component: {fileID: 1162534918937242673}
   - component: {fileID: 8541346131826647083}
   - component: {fileID: 735994357977968619}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_eye_eyelash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4794,15 +4785,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 99442914611001139}
-  - {fileID: 4308901505512728838}
-  - {fileID: 562426255862079783}
-  - {fileID: 6387534927892250595}
-  - {fileID: 3086195646986341909}
-  - {fileID: 825800019570722309}
-  - {fileID: 735994357977968619}
-  - {fileID: 1659022239217128031}
-  - {fileID: 8610352774527227143}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -4835,7 +4826,7 @@ GameObject:
   - component: {fileID: 5554956080543550340}
   - component: {fileID: 6785145869668581925}
   - component: {fileID: 7707239168260544001}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4958,7 +4949,7 @@ GameObject:
   - component: {fileID: 455856441520666449}
   - component: {fileID: 2707604409153093880}
   - component: {fileID: 5596785355413267323}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boca_inner_lip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5081,7 +5072,7 @@ GameObject:
   - component: {fileID: 359416167489323496}
   - component: {fileID: 1084484283867577133}
   - component: {fileID: 4308901505512728838}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: left_eye_pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5265,7 +5256,7 @@ GameObject:
   - component: {fileID: 3286761619040817007}
   - component: {fileID: 6790817283089261645}
   - component: {fileID: 4551538875336215360}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: earings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5449,7 +5440,7 @@ GameObject:
   - component: {fileID: 8047562774188637287}
   - component: {fileID: 2228450226527403089}
   - component: {fileID: 973958480356343616}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boca_upper_lip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5572,7 +5563,7 @@ GameObject:
   - component: {fileID: 5393666777042647938}
   - component: {fileID: 5099893645597034523}
   - component: {fileID: 715603939344781481}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5756,7 +5747,7 @@ GameObject:
   - component: {fileID: 3876587658836382589}
   - component: {fileID: 5432239620774170318}
   - component: {fileID: 3866883847479628652}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5879,7 +5870,7 @@ GameObject:
   - component: {fileID: 829105016660593688}
   - component: {fileID: 7509649495124587323}
   - component: {fileID: 1694997046645384305}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: necklace_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6050,9 +6041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 4551538875336215360}
-  - {fileID: 6644043206307041206}
-  - {fileID: 3088360739218690279}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -6146,7 +6137,7 @@ GameObject:
   - component: {fileID: 7196736461093446017}
   - component: {fileID: 6053936462716123432}
   - component: {fileID: 6644043206307041206}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: face_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6269,7 +6260,7 @@ GameObject:
   - component: {fileID: 4138172649375847461}
   - component: {fileID: 6047847312512629306}
   - component: {fileID: 3086195646986341909}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: eyebrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,7 +6553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _childDrawableRenderers:
-  - {fileID: 4780486554715333731}
+  - {fileID: 0}
   _childParts: []
   _isOverwrittenPartMultiplyColors: 0
   _isOverwrittenPartScreenColors: 0
@@ -6595,7 +6586,7 @@ GameObject:
   - component: {fileID: 7001199572437530930}
   - component: {fileID: 7427474804487761058}
   - component: {fileID: 6387534927892250595}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_eye_pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6718,7 +6709,7 @@ GameObject:
   - component: {fileID: 7927128225173004845}
   - component: {fileID: 2316130379139882967}
   - component: {fileID: 1039533456246036545}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6902,7 +6893,7 @@ GameObject:
   - component: {fileID: 6204896477625762780}
   - component: {fileID: 8003338550619786987}
   - component: {fileID: 2957152703118386793}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boca_bottom_lip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7025,7 +7016,7 @@ GameObject:
   - component: {fileID: 985434764649809758}
   - component: {fileID: 2834316235848951174}
   - component: {fileID: 7538255084304733813}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: dress_left_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7148,7 +7139,7 @@ GameObject:
   - component: {fileID: 8593582126074703649}
   - component: {fileID: 7932278514986176052}
   - component: {fileID: 3088360739218690279}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: front_hair_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7271,7 +7262,7 @@ GameObject:
   - component: {fileID: 6925727464519288500}
   - component: {fileID: 572902842170955712}
   - component: {fileID: 8610352774527227143}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: right_eye_specular_shine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

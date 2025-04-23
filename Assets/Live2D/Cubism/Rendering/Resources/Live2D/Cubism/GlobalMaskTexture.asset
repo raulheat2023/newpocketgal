@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GlobalMaskTexture
   m_EditorClassIdentifier: 
   _size: 1024
-  _subdivisions: 1
+  _subdivisions: 3
   _renderTextureCount: 0
